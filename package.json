@@ -1,0 +1,45 @@
+{
+  "name": "foxivity.codes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init-project": "npm run init:npm-install && npm run init:dirs && npm run init:files && npm run init:gitignore",
+    "init:dirs": "mkdirp scss/partials css images js",
+    "init:files": "touch README.md index.html scss/main.scss js/main.js",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "init:npm-install": "npm install",
+    "build": "npm run build:clean && npm run build:sassprefixer && npm run watch",
+    "build:clean": "rimraf css/",
+    "build:cleaning": "rimraf css/ scss/ js/ images/ .sass-cache/ .gitignore *.html README.md package-lock.json",
+    "build:clean-node": "rm -R node_modules/",
+    "build:clean-all": "npm run build:cleaning && npm run build:clean-node",
+    "build:sass": "sass --update scss/main.scss:css/main.css",
+    "build:autoprefixer": "autoprefixer-cli css/main.css",
+    "build:sassprefixer": "npm run build:sass && npm run build:autoprefixer",
+    "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browser-sync\" ",
+    "watch:sassprefixer": "onchange -d 100 scss/*.scss scss/partials/*scss -- npm run build:sassprefixer",
+    "watch:browser-sync": "browser-sync start --server --files css/*.css *.html js/*.js"
+  },
+  "keywords": [],
+  "author": "foxivity.codes",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.13",
+    "mkdirp": "^0.5.1",
+    "onchange": "^3.2.1",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "parallelshell": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanZdan/zadanie_11_6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PanZdan/zadanie_11_6/issues"
+  },
+  "homepage": "https://github.com/PanZdan/zadanie_11_6#readme"
+}
