@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init-project": "npm run init:npm-install && npm run init:dirs && npm run init:files && npm run init:gitignore",
+    "init-project": "npm run init:npm-install && npm run init:dirs && npm run init:files && npm run init:README",
     "init:dirs": "mkdirp scss/partials css images js",
-    "init:files": "touch README.md index.html scss/main.scss js/main.js",
-    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+
+    "init:files": "curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/index.html -o index.html && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/main.js -o js/main.js && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/main.css -o css/main.css && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/main.scss -o scss/main.scss && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/_animate.scss -o scss/partials/_animate.scss && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/_layout.scss -o scss/partials/_layout.scss && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/_mixins.scss -o scss/partials/_mixins.scss && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/_reset.scss -o scss/partials/_reset.scss && curl https://raw.githubusercontent.com/LisekTeam/project-pattern/master/_variables.scss -o scss/partials/_variables.scss && curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",        
+    "init:README": "touch README.md",
     "init:npm-install": "npm install",
     "build": "npm run build:clean && npm run build:sassprefixer && npm run watch",
     "build:clean": "rimraf css/",
